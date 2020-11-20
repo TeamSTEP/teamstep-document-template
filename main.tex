@@ -1,0 +1,57 @@
+\documentclass[11pt,titlepage]{report}
+\usepackage{Preamble}
+
+% This is where you set the document author information
+\newcommand{\rtitle}{Document Title}
+\newcommand{\rauthor}{Some Guy}
+% The category refers to the type of this document. Is it a dev log or a research paper?
+\newcommand{\rcategory}{Document Type}
+
+\AtBeginDocument{
+\hypersetup{pdftitle=\rtitle} % Set the PDF's title to your title
+\hypersetup{pdfauthor=\rauthor} % Set the PDF's author to your name
+}
+
+\begin{document}
+% Create the title page
+\begin{titlepage}
+    \newgeometry{margin=3cm}
+	\centering
+    \includegraphics[width=0.5\linewidth]{teamstep-logo.png}\\[0.25cm] 	% University Logo
+    \textsc{\LARGE Making the world a fun place, one STEP at a time}\\ \vspace{\fill}
+    \textbf{\textsc{\fontsize{50}{50}\selectfont \rtitle}}\\ \vspace{\fill}		
+	\textsc{\LARGE \rcategory}\\[0.4cm]
+	\rule{\linewidth}{0.2 mm} \\[0.5 cm]
+	\rauthor \\[2cm] \today
+\end{titlepage}
+\restoregeometry
+
+\thispagestyle{numberonly}
+
+% Render the summary block
+\subfile{chapters/0-Summary}
+
+% Render the table of contents
+\tableofcontents
+
+% Render all the chapters of this document. Add more or remove when you have to
+\chapter{Introduction}
+\subfile{chapters/1-Introduction}
+
+\chapter{Methods}
+\subfile{chapters/2-Methods}
+
+\chapter{Results}
+\subfile{chapters/3-Results}
+
+\chapter{Discussion}
+\subfile{chapters/4-Discussion}
+
+\chapter{Conclusion}
+\subfile{chapters/5-Conclusion}
+
+\clearpage
+\pagestyle{numberonly}
+\printbibliography[heading=bibintoc]
+
+\end{document}
